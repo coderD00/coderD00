@@ -1,0 +1,101 @@
+import java.util.ArrayList;
+
+
+abstract class employee{
+private String name;
+private int id;
+
+public employee(String name, int id){
+    this.name = name;
+    this.id = id; 
+}
+public String getName(){
+    return name;
+}
+public int getId(){
+    return id;
+}
+public abstract double calculatesalary();
+@Override
+public String toString(){
+    return "employee [name="+name+", id ="+id+", salary="+calculatesalary()+"]";
+    }
+}
+
+class Fulltimeemployee extends employee{
+    private double monthlysalary;
+
+    public Fulltimeemployee(String name, int id, double monthlysalary){
+        super(name,id);
+        this.monthlysalary = monthlysalary;
+    }
+    @Override
+    public double calculatesalary(){
+        return monthlysalary = monthlysalary;
+    }
+}
+
+class Parttimeemployee extends employee{
+    private int hourswork;
+    private double hourlyrate;
+
+    public Parttimeemployee(String name, int id, int hourswork, double hourlyrate){
+        super(name, id);
+        this.hourswork = hourswork;
+        this.hourlyrate = hourlyrate;
+    }
+    
+    @Override
+    public double calculatesalary(){
+        return hourswork * hourlyrate;
+    }
+}
+
+class payrollsystem {
+private ArrayList<employee> employeesList;
+ 
+public payrollsystem(){
+    employeesList = new ArrayList<>();
+
+}
+
+public void addemployee(employee Employee){
+    employeesList.add(Employee);
+}
+public void removeemployee(int id){
+    employee employeetoremove = null;
+    for(employee Employee: employeesList){
+        if(Employee.getId()==id){
+            employeetoremove = Employee;
+            break;
+        }
+    }
+    if(employeetoremove != null){
+        employeesList.remove(employeetoremove);
+        }
+    }
+
+    public void displayEmployee(){
+        for(employee Employee : employeesList){
+            System.out.println(Employee);
+        }
+    }
+}
+
+public class payroll {
+    public static void main(String[] args) {
+        payrollsystem PayrollSystem = new payrollsystem();
+        Fulltimeemployee emp1 = new Fulltimeemployee("sidharth",420, 1500);
+        Parttimeemployee emp2 = new Parttimeemployee("anoop", 10, 3, 300);
+
+        PayrollSystem.addemployee(emp1);
+        PayrollSystem.addemployee(emp2);
+        System.out.println("Initial Employee Details: ");
+        PayrollSystem.displayEmployee();
+        System.out.println("Removing Employee: ");
+        PayrollSystem.removeemployee(10);
+        System.out.println("remaining employee details: ");
+        PayrollSystem.displayEmployee();
+        
+    }
+}
