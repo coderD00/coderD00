@@ -1,5 +1,6 @@
-## Hi there 👋
+💻 Tech Stack:
 
+Java CSS3 Spring Apache Spark Socket.io Apache MySQL Git
 <!--
 **coderD00/coderD00** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
